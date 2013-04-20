@@ -43,13 +43,27 @@ The dual of the torus is a 3-regular graph. According to the definition, that wo
 
 \begin{center}
 \includegraphics[scale=1]{images/k3dual.png}\\
-Figure 2: Dual of a complete graph, $K_3$.
+Figure 3: Dual of a complete graph, $K_3$.
 \end{center}
 
 \medskip
 By taking the dual of groups of $K_3$, a similar concept is used to connect the vertices for each region, excluding the infinite region. As a result of the three edges in each $K_3$, each vertex representing one region has three incident edges in the planar dual graph of each $K_3$. Thus, the dual of the torus is a 3-regular graph.
 
 \subsection*{Bridgeless Graph}
+A graph is considered bridgeless if the removal of any single edge does not disconnect the graph.
+
+\medskip
+The dual of the torus is bridgeless because the dual does not contain a cut-edge, whose removal would increase the number of components. Since the dual consists of a group of cycles, $C_6$, the edge connectivity of the dual would have to be, at minimum, the edge connectivity of $C_6$. The edge connectivity of $C_6$, $\kappa'(C_6)$, is greater than or equal to two because $C_6$ does not contain a cut-edge. As a result, the edge connectivity of the dual is at least two, as shown below.
+
+\begin{center}
+\includegraphics[scale=1]{images/c6connectivity.png}\\
+Figure 4: Connectivity of $C_6$.\\
+Removal of one edge in the left graph of $C_6$ does not disconnect $C_6$.\\
+Removal of two edges in the right graph of $C_6$ disconnects $v$ from $C_6$.
+\end{center}
+
+\medskip
+Since a grouping of $C_6$ in the dual adds one edge to each vertex, the edge connectivity of the dual is increased to three. That edge is one extra edge needed to increase the number of components. As a result, the removal of at least three edges is required to disconnect the dual of the torus. Thus, the dual of the torus is bridgeless because the removal of any single edge does not disconnect the graph.
 
 \end{flushleft}
 \end{document}
