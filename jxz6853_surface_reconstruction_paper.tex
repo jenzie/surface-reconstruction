@@ -11,16 +11,31 @@
 \begin{abstract}The purpose of this paper is to utilize a technique for recreating models of 3-D objects. This process is referred to as surface reconstruction, which replaces a set of sample points using a faceted geometric model. Concepts of graph theory are used, specifically duals of graphs, n-regular graphs, bridgeless graphs, and matchings.
 \end{abstract}
 
-%\includegraphics[scale=0.7]{graph.png}
-
 \begin{flushleft}
-\section*{one}
+\section*{Introduction}
+The paper will refer to the triangulation of a 3-D surface given in the figure below.
 
-\subsection*{one sub}
-text
+\begin{center}
+\includegraphics[scale=1]{images/torus1.png}\\
+Figure 1: A torus.
+\end{center}
+
+The figure resembles a torus, which is created by revolving a circle along a line made by another circle. Divisions of polygonal faces that form the torus produces triangular faces throughout the torus.
+
+\subsection*{Dual Graph}
+By definition, the planar dual of any planar graph, G, can be constructed by placing a vertex in each region of G and then adding edges between regions that share a border. The planar dual is denoted as D(G).
 
 \medskip
-text
+If a dual of the torus is to be constructed, the same procedure to create the dual of a planar graph will be used. A point will be placed in each of the triangular faces, then lines between pairs of vertices would be placed, if and only if, the corresponding faces share a common side. The dual of the torus is constructed below.
+
+\begin{center}
+\includegraphics[scale=1.25]{images/torus2.png}\\
+Figure 2: Dual of a torus.
+\end{center}
+
+As shown in the figure, the triangular faces of the original torus are hexagonal faces in the dual of the torus.
+
+\subsection*{n-regular Graph}
 
 \end{flushleft}
 \end{document}
