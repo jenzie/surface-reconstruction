@@ -16,11 +16,11 @@
 The paper will refer to the triangulation of a 3-D surface given in the figure below.
 
 \begin{center}
-\includegraphics[scale=1]{images/torus1.png}\\
-Figure 1: A torus.
+\includegraphics[scale=1]{images/torus.png}\\
+Figure 1: Triangulation of a torus.
 \end{center}
 
-The figure resembles a torus, which is created by revolving a circle along a line made by another circle. Divisions of polygonal faces that form the torus produces triangular faces throughout the torus.
+The figure resembles a torus, which is created by revolving a circle along a line made by another circle. Divisions of polygonal faces that form the torus produces triangular faces throughout the torus. This triangular mesh will serve as the basis for the surface reconstruction method that will be explained later in this paper.
 
 \section*{Dual Graph}
 By definition, the planar dual of any planar graph, G, can be constructed by placing a vertex in each region of G and then adding edges between regions that share a border. The planar dual is denoted as D(G).
@@ -29,7 +29,7 @@ By definition, the planar dual of any planar graph, G, can be constructed by pla
 If a dual of the torus is to be constructed, the same procedure to create the dual of a planar graph will be used. A point will be placed in each of the triangular faces, then lines between pairs of vertices would be placed, if and only if, the corresponding faces share a common side. The dual of the torus, G, is constructed below.
 
 \begin{center}
-\includegraphics[scale=1.25]{images/torus2.png}\\
+\includegraphics[scale=1.25]{images/torusdual.png}\\
 Figure 2: Dual of a torus, G.
 \end{center}
 
@@ -97,7 +97,31 @@ Edges in the set of matching edges are colored green.
 Either way, the group of $C_6$ is a perfect matching because every vertex is an endpoint of an edge in the set of matching edges. Even the individual $C_6$ that do not have any edges in the matching set have every single one of its vertices as endpoints of edges in the set of matching edges because its adjacent $C_6$ have already fulfilled the requirements for the vertices.
 
 \medskip
-If the groupings of $C_6$ are expanded to include all of the $C_6$ faces in the dual of the torus, the perfect matching would look like the graph below.
+If the groupings of $C_6$ are expanded to include all of the $C_6$ faces in the dual of the torus, there will exist a perfect matching for the dual of the torus. The perfect matching would look like the graph below.
+
+\begin{center}
+\includegraphics[scale=1.7]{images/torusmatching.png}\\
+Figure 7: Perfect matching for the dual of a torus.\\
+Edges in the set of matching edges are colored green.
+\end{center}
+
+\section*{Face Merging}
+As mentioned before, a set of sample points is collected and then fit into a triangular mesh used for the surface reconstruction.
+
+\medskip
+A method of surface reconstruction used by Matthias Eck and Hugues Hoppe is known as the B-Spline construction method. A problem with this method is that it requires quadrilateral faces instead of triangular faces. To utilize that method, the triangulation for the torus would need to be converted to contain quadrilateral faces only.
+
+\medskip
+One method of converting triangular faces into quadrilateral faces would require the merging of faces. Pairs of faces are merged, if and only if, there is a matching edge connecting vertices in the corresponding faces. Using the Figure 7, the merging of the faces are drawn below.
+
+\begin{center}
+\includegraphics[scale=1.7]{images/torusmerging.png}\\
+Figure 8: Face merging for the dual of a torus.\\
+Edges in the set of matching edges are colored green.\\
+Edges in the set of merged edges are colored red.
+\end{center}
+
+As shown above, the 3-D model of a torus is converted from a model with triangular faces to one with quadrilateral faces.
 
 \end{flushleft}
 \end{document}
