@@ -22,7 +22,7 @@ Figure 1: A torus.
 
 The figure resembles a torus, which is created by revolving a circle along a line made by another circle. Divisions of polygonal faces that form the torus produces triangular faces throughout the torus.
 
-\subsection*{Dual Graph}
+\section*{Dual Graph}
 By definition, the planar dual of any planar graph, G, can be constructed by placing a vertex in each region of G and then adding edges between regions that share a border. The planar dual is denoted as D(G).
 
 \medskip
@@ -35,7 +35,7 @@ Figure 2: Dual of a torus, G.
 
 As shown in the figure, the triangular faces of the original torus are hexagonal faces in the dual of the torus.
 
-\subsection*{n-regular Graph}
+\section*{n-regular Graph}
 A graph is considered n-regular if every vertex in the graph is incident to exactly n edges.
 
 \medskip
@@ -49,7 +49,7 @@ Figure 3: Dual of a complete graph, $K_3$.
 \medskip
 By taking the dual of groups of $K_3$, a similar concept is used to connect the vertices for each region, excluding the infinite region. As a result of the three edges in each $K_3$, each vertex representing one region has three incident edges in the planar dual graph of each $K_3$. Thus, the dual of the torus is a 3-regular graph.
 
-\subsection*{Bridgeless Graph}
+\section*{Bridgeless Graph}
 A graph is considered bridgeless if the removal of any single edge does not disconnect the graph.
 
 \medskip
@@ -64,6 +64,40 @@ Removal of two edges in the right graph of $C_6$ disconnects $v$ from $C_6$.
 
 \medskip
 Since a grouping of $C_6$ in the dual adds one edge to each vertex, the edge connectivity of the dual is increased to three. That edge is one extra edge needed to increase the number of components. As a result, the removal of at least three edges is required to disconnect the dual of the torus. Thus, the dual of the torus is bridgeless because the removal of any single edge does not disconnect the graph.
+
+\section*{Perfect Matching}
+A matching for a graph is a set of disjoint edges, in which no two edges share a common vertex. A perfect matching for a graph, $G$, is a set of matching edges, $M$, such that each vertex in $V(G)$ is an endpoint of some edge in $M$.
+
+\subsection*{Petersen's Theorem}
+\medskip
+According to Petersen's Theorem, every 3-regular bridgeless graph has a perfect matching.
+
+\medskip
+As proven in the two sections above, the dual of the torus, G, is a 3-regular bridgeless graph. Thus, the dual of the torus must have a perfect matching.
+
+\medskip
+Since all of the faces in the dual of the torus is a grouping of $C_6$, the matching of the dual relies on the matching of a single $C_6$. The perfect matching of a $C_6$ requires every vertex in $C_6$ to be the endpoint of an edge in the set of matching edges, $M$. This perfect matching can be created by adding every other edge in the cycle to the set of matching edges. As shown below, the set of matching edges, $M$, is $\{e_1, e_3, e_5\}$.
+
+\begin{center}
+\includegraphics[scale=1]{images/c6matching.png}\\
+Figure 5: Perfect matching of $C_6$.\\
+Edges in the set of matching edges are colored green.
+\end{center}
+
+\medskip
+With a group of $C_6$, the perfect matching of the center, $center_1$, $C_6$ is the just a perfect matching of a single $C_6$ (as shown in Figure 5). The surrounding $C_6$ alternate between single $C_6$ perfect matchings and single $C_6$ with none of its edges taken as matching edges. Alternatively, it can be viewed with the center, $center_2$, being a single $C_6$ with none of its edges taken as a matching. The surrounding $C_6$ are all perfect matchings of a single $C_6$. Both ways of viewing the perfect matching are below.
+
+\begin{center}
+\includegraphics[scale=0.7]{images/c6groupmatching.png}\\
+Figure 6: Perfect matching for a group of $C_6$.\\
+Edges in the set of matching edges are colored green.
+\end{center}
+
+\medskip
+Either way, the group of $C_6$ is a perfect matching because every vertex is an endpoint of an edge in the set of matching edges. Even the individual $C_6$ that do not have any edges in the matching set have every single one of its vertices as endpoints of edges in the set of matching edges because its adjacent $C_6$ have already fulfilled the requirements for the vertices.
+
+\medskip
+If the groupings of $C_6$ are expanded to include all of the $C_6$ faces in the dual of the torus, the perfect matching would look like the graph below.
 
 \end{flushleft}
 \end{document}
