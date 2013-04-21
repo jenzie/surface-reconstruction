@@ -105,12 +105,13 @@ Figure 7: Perfect matching for the dual of a torus.\\
 Edges in the set of matching edges are colored green.
 \end{center}
 
-\section*{Face Merging}
+\section*{B-Spline Construction}
 As mentioned before, a set of sample points is collected and then fit into a triangular mesh used for the surface reconstruction.
 
 \medskip
 A method of surface reconstruction used by Matthias Eck and Hugues Hoppe is known as the B-Spline construction method. A problem with this method is that it requires quadrilateral faces instead of triangular faces. To utilize that method, the triangulation for the torus would need to be converted to contain quadrilateral faces only.
 
+\subsection*{Face Merging}
 \medskip
 One method of converting triangular faces into quadrilateral faces would require the merging of faces. Pairs of faces are merged, if and only if, there is a matching edge connecting vertices in the corresponding faces. Using the Figure 7, the merging of the faces are drawn below.
 
