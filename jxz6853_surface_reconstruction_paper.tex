@@ -120,7 +120,10 @@ A method of surface reconstruction used by Matthias Eck and Hugues Hoppe is know
 
 \subsection*{Face Merging}
 \medskip
-One method of converting triangular faces into quadrilateral faces would require the merging of faces. Pairs of faces are merged, if and only if, there is a matching edge connecting vertices in the corresponding faces. Using the perfect matching of the dual of the torus from Figure 7, the merging of the faces is drawn below.
+One method of converting triangular faces into quadrilateral faces would require the merging of faces. Pairs of faces are merged, if and only if, there is a matching edge connecting vertices in the corresponding faces.
+
+\subsubsection*{Torus}
+Using the perfect matching of the dual of the torus from Figure 7, the merging of the faces is drawn below.
 
 \begin{center}
 \includegraphics[scale=1.7]{images/torusmerging.png}\\
@@ -130,6 +133,45 @@ Edges in the set of merged faces are colored red.
 \end{center}
 
 As shown above, the 3-D model of a torus is converted from a model with triangular faces to one with quadrilateral faces. The B-Spline construction method can now be used on the model of the torus.
+
+\subsubsection*{3-D Closed Surface}
+The method of converting triangular faces into quadrilateral faces works for any 3-D closed surface, not just a torus. This can be proven by looking at a small portion of a surface with triangular faces. As long as a perfect matching is made on the surface, each triangular face can be paired with another triangular face, if and only if, there is a matching edge between the two faces. The perfect matching guarantees that all faces are paired, as shown below.
+
+\begin{center}
+\includegraphics[scale=0.8]{images/3dmerging.png}\\
+Figure 9: Face merging for a 3-D surface with triangular faces.\\
+Edges in the dual of the surface form hexagonal faces.\\
+Edges in the set of matching edges are colored green.\\
+Edges in the set of merged faces are colored red.\\
+Quadrilateral faces are colored blue, pink, and orange.
+\end{center}
+
+Since the 3-D surface is a closed surface, the edges of the surface in Figure 9 extend outwards until it meets faces that close the surface. The merging, as shown, is a pattern that is extendable to the rest of the 3-D closed surface's faces. Thus, the method of converted triangular faces into quadrilateral faces works for any 3-D surface, as long as it is closed (and contains a perfect matching.)
+
+\subsection*{Weighted Merging}
+By merging faces in a model, a distortion is created in the model. In order to minimize the amount of distortion, a choice in the pairs of faces to merge is critical to maintaining a model that resembles the original surface.
+
+\begin{center}
+\includegraphics[scale=0.5]{images/distortion.png}\\
+Figure 10: Model of the face of a cat.
+\end{center}
+
+\medskip
+Using Figure 10 as reference, the merging of two faces forming the cat's eye causes much more distortion to the model because the two faces are raised. However, the merging of two faces on the cat's ear would not greatly affect the shape of the model because those two surfaces are nearly flat.
+
+\medskip
+One strategy to minimize the distortion of the model is to assign weights to each face. If a face has a high possibility of distortion (raised faces; steep slope), the face is assigned a high weight. A face with a low possibility (flat faces; no slope) will be assigned a lower weight. When a perfect matching and merging are being created, the weights of the faces are taken into consideration when assigning matchings and mergings.
+
+\medskip
+The algorithm for this method would be as follows:
+\begin{enumerate}
+\item Assign weights to all faces based on their possibility of distortion.
+\item Starting with the faces with low weights, assign matching/merging.
+\item Repeat until the weights of all pairs of faces are too high.
+\end{enumerate}
+
+\medskip
+An example of a merging is below.
 
 \end{flushleft}
 \end{document}
