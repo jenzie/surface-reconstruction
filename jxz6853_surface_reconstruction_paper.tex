@@ -8,7 +8,7 @@
 \date{April 25, 2013}
 \maketitle
 
-\begin{abstract}The purpose of this paper is to utilize a technique for recreating models of 3-D objects. This process is referred to as surface reconstruction, which replaces a set of sample points using a faceted geometric model. Concepts of graph theory are used, specifically duals of graphs, n-regular graphs, bridgeless graphs, and matchings.
+\begin{abstract}The purpose of this paper is to utilize a technique to recreate models of 3-D objects. This process is referred to as surface reconstruction, which replaces a set of sample points using a faceted geometric model. Multiple concepts from graph theory are used, specifically duals of graphs, n-regular graphs, bridgeless graphs, and matchings. Weighted and unweighted mergings of faces are also discussed to address issues of distortion resulting from mergings.
 \end{abstract}
 
 \begin{flushleft}
@@ -148,6 +148,7 @@ Quadrilateral faces are colored blue, pink, and orange.
 
 Since the 3-D surface is a closed surface, the edges of the surface in Figure 9 extend outwards until it meets faces that close the surface. The merging, as shown, is a pattern that is extendable to the rest of the 3-D closed surface's faces. Thus, the method of converted triangular faces into quadrilateral faces works for any 3-D surface, as long as it is closed (and contains a perfect matching.)
 
+\newpage
 \subsection*{Weighted Merging}
 By merging faces in a model, a distortion is created in the model. In order to minimize the amount of distortion, a choice in the pairs of faces to merge is critical to maintaining a model that resembles the original surface.
 
@@ -167,11 +168,27 @@ The algorithm for this method would be as follows:
 \begin{enumerate}
 \item Assign weights to all faces based on their possibility of distortion.
 \item Starting with the faces with low weights, assign matching/merging.
-\item Repeat until the weights of all pairs of faces are too high.
+\item Repeat until the weights of all pairs of faces meet a desired threshold.
 \end{enumerate}
 
+\newpage
 \medskip
-An example of a merging is below.
+An example of a weighted, selective merging is below.
+
+\begin{center}
+\includegraphics[scale=1]{images/weightedmerging.png}\\
+Figure 11: Selective merging based on weight of the faces.\\
+Edges in the dual of the surface form hexagonal faces.\\
+Edges in the set of matching edges are colored green.\\
+Edges in the set of merged faces are colored red.\\
+Quadrilateral faces are colored blue, pink, and orange.
+\end{center}
+
+\medskip
+In Figure 11, not all of the faces were merged. Only the pairs of faces with individual weights up to a selected threshold of 4 were merged. Using this method, the distortion of the model is kept to a minimum so that the original surface could be preserved as much as possible.
+
+\section*{Conclusion}
+It can be concluded by having a graph whose dual is both 3-regular and bridgeless, a perfect matching exists for the dual of that graph. That perfect matching allows a surface containing only triangular faces to be converted to a surface containing only quadrilateral faces by merging faces connected by matchings. The method described works for any 3-D closed surface containing triangular faces. However, the merging of those faces need to the resulting amount of distortion into consideration. The strategy described can serve to reduce the amount of distortion by providing a means of selective merging based on weighted faces.
 
 \end{flushleft}
 \end{document}
