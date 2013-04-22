@@ -20,13 +20,13 @@ The paper will refer to the triangulation of a 3-D surface given in the figure b
 Figure 1: Triangulation of a torus.
 \end{center}
 
-The figure resembles a torus, which is created by revolving a circle along a line made by another circle. Divisions of polygonal faces that form the torus produces triangular faces throughout the torus. This triangular mesh will serve as the basis for the surface reconstruction method that will be explained later in this paper.
+The figure resembles a torus, which is created by revolving a circle along a line made by another circle. Divisions of polygonal faces that form the torus produce triangular faces throughout the torus. This triangular mesh will serve as the basis for the surface reconstruction method that will be explained later in this paper.
 
 \section*{Dual Graph}
 By definition, the planar dual of any planar graph, G, can be constructed by placing a vertex in each region of G and then adding edges between regions that share a border. The planar dual is denoted as D(G).
 
 \medskip
-If a dual of the torus is to be constructed, the same procedure to create the dual of a planar graph will be used. A point will be placed in each of the triangular faces, then lines between pairs of vertices would be placed, if and only if, the corresponding faces share a common side. The dual of the torus, G, is constructed below.
+If a dual of the torus is to be constructed, the same procedure to create the dual of a planar graph will be used. A point will be placed in each of the triangular faces and then lines between pairs of vertices would be placed, if and only if, the corresponding faces share a common side. The dual of the torus, G, is constructed below.
 
 \begin{center}
 \includegraphics[scale=1.25]{images/torusdual.png}\\
@@ -65,6 +65,7 @@ Removal of two edges in the right graph of $C_6$ disconnects $v$ from $C_6$.
 \medskip
 Since a grouping of $C_6$ in the dual adds one edge to each vertex, the edge connectivity of the dual is increased to three. That edge is one extra edge needed to increase the number of components. As a result, the removal of at least three edges is required to disconnect the dual of the torus. Thus, the dual of the torus is bridgeless because the removal of just a single edge does not disconnect the graph.
 
+\newpage
 \section*{Perfect Matching}
 A matching for a graph is a set of disjoint edges, in which no two edges share a common vertex. A perfect matching for a graph, $G$, is a set of matching edges, $M$, such that each vertex in $V(G)$ is an endpoint of some edge in $M$.
 
@@ -134,6 +135,7 @@ Edges in the set of merged faces are colored red.
 
 As shown above, the 3-D model of a torus is converted from a model with triangular faces to one with quadrilateral faces. The B-Spline construction method can now be used on the model of the torus.
 
+\newpage
 \subsubsection*{3-D Closed Surface}
 The method of converting triangular faces into quadrilateral faces works for any 3-D closed surface, not just a torus. This can be proven by looking at a small portion of a surface with triangular faces. As long as a perfect matching is made on the surface, each triangular face can be paired with another triangular face, if and only if, there is a matching edge between the two faces. The perfect matching guarantees that all faces are paired, as shown below.
 
@@ -158,7 +160,7 @@ Figure 10: Model of the face of a cat.
 \end{center}
 
 \medskip
-Using Figure 10 as reference, the merging of two faces forming the cat's eye causes much more distortion to the model because the two faces are raised. However, the merging of two faces on the cat's ear would not greatly affect the shape of the model because those two surfaces are nearly flat.
+Using Figure 10 as reference, the merging of two faces forming the cat's eye causes much more distortion to the model because those two faces are raised. However, the merging of two faces on the cat's ear would not greatly affect the shape of the model because those two surfaces are nearly flat.
 
 \medskip
 One strategy to minimize the distortion of the model is to assign weights to each face. If a face has a high possibility of distortion (raised faces; steep slope), the face is assigned a high weight. A face with a low possibility (flat faces; no slope) will be assigned a lower weight. When a perfect matching and merging are being created, the weights of the faces are taken into consideration when assigning matchings and mergings.
@@ -189,6 +191,42 @@ In Figure 11, not all of the faces were merged. Only the pairs of faces with ind
 
 \section*{Conclusion}
 It can be concluded by having a graph whose dual is both 3-regular and bridgeless, a perfect matching exists for the dual of that graph. That perfect matching allows a surface containing only triangular faces to be converted to a surface containing only quadrilateral faces by merging faces connected by matchings. The method described works for any 3-D closed surface containing triangular faces. However, the merging of those faces need to the resulting amount of distortion into consideration. The strategy described can serve to reduce the amount of distortion by providing a means of selective merging based on weighted faces.
+
+\newpage
+\section*{References}
+\begin{tabbing}
+Eck, M\=atthias, and Hugues Hoppe. Automatic Reconstruction of B-Spline Surfaces of \\ \> Arbitrary Topological Type. Proc. of SIGGRAPH. 1996. 325-34.
+
+\\Goemans, Michel X., and Yufei Zhao. "Lecture 4." 22 Sept. 2009.
+\\ \> \emph{\textless http://math.mit.edu/~goemans/18438F09/lec4.pdf\textgreater}
+
+\\Meringer, Markus, and Weisstein W. Eric. "Regular Graph."
+\\ \> MathWorld--A Wolfram Web Resource. 20 Apr. 2013.
+\\ \> \emph{\textless http://mathworld.wolfram.com/RegularGraph.html\textgreater}
+
+\\Muhammad, Rashid Bin. "Graph Planarity." Graph Theory. 21 Apr. 2013.
+\\ \> \emph{\textless http://www.personal.kent.edu/~rmuhamma/GraphTheory/}
+\\ \> \emph{MyGraphTheory/planarity.html\textgreater}
+
+\\Omar, Mohamed. "Lecture - Perfect Matchings." 11 Nov. 2013.
+\\ \> \emph{\textless http://www.its.caltech.edu/~momar/PerfectMatchingsBipartite.pdf\textgreater}
+
+\\Weisstein, Eric W. "Bridgeless Graph."
+\\ \> MathWorld--A Wolfram Web Resource. 21 Apr. 2013.
+\\ \> \emph{\textless  http://mathworld.wolfram.com/BridgelessGraph.html\textgreater}
+
+\\Weisstein, Eric W. "Graph Theory."
+\\ \> MathWorld--A Wolfram Web Resource. 20 Apr. 2013.
+\\ \> \emph{\textless http://mathworld.wolfram.com/GraphBridge.html\textgreater}
+
+\\Yuan, Yuan, and Shiyu Zhou.
+\\ \>"Sequential B-Spline Surface Construction Using Multiresolution Data Clouds."
+\\ \>Journal of Computing and Information Science in Engineering 12.2. 14 May 2012.
+\\ \> \emph{\textless http://computingengineering.asmedigitalcollection.asme.org/}
+\\ \> \emph{article.aspx?articleid=1402691\textgreater}
+
+
+\end{tabbing}
 
 \end{flushleft}
 \end{document}
